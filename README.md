@@ -1,20 +1,16 @@
-# Project FIFA
+# Project Fifa Groep 1
 
-## Welkom bij het project FIFA.
+Deze repository is gemaakt in opdracht van `Radius College`. Dit is de Website van het project!
 
-Deze repository dient als startpunt voor het maken van jullie web-applicatie. Zie documentatie voor verdere uitleg.
+## Het Doel
 
-## Getting started
-Bekijk het hoorcollege “versiebeheer” op mysite!
+Het doel van dit project was, het maken van een C# applicatie en een web-applicatie waar we
+teams, pools en spelers toe konden voegen in de web-applicatie en in de C# applicatie hierop konden wedden.
 
-Hoe haal ik deze code binnen?
-* Maak een github organisatie aan met je projectgroep
-* Nodig alle members van de groep uit voor deze organisatie
-* Fork deze repository naar jullie aangemaakte githuborganisatie (knop rechtsboven).
-* Iedere groepsgenoot cloned de zojuist gekopieerde repository.
-* Als het goed is is iedereen van het groepje eigenaar van de repository en kan iedereen pullen en pushen.
+## Projectteam
 
-## Tip
-In deze repository is alleen een opzet voor de code beschikbaar, maar de opdrachtgever heeft ook al een idee over hoe de web-app er uit moet gaan zien. Vraag hier naar in je interview!
-
- 
+Dit project is gemaakt door:
+- Mees Maske
+- Abdulla Dönmez
+- Ahmad Khaled
+- Kevin Musters
