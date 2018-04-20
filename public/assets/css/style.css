@@ -1,0 +1,65 @@
+/* ALGEMEEN */
+*{
+    font-family: 'Arial', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+#header{
+    background: rgb(0, 230, 0);
+    height: 100vh;
+    position: fixed;
+}
+#header .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#header .container nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+}
+#header .container *{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+#header .container a{
+    padding: 20px 15px;
+    display: block;
+    background: linear-gradient(to left,
+    transparent,
+    transparent 50%,
+    rgb(0, 200, 10) 50%,
+    rgb(0, 200, 10));
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: background .5s ease-in-out;
+}
+#header .container a i{
+    margin-right: 5px;
+}
+#header .container h1{
+    font-size: 2em;
+    margin: 20px 5px;
+    padding: 0;
+}
+#header .container a:hover{
+    background-position: 0 0;
+}
+
+/* MAIN */
+.main{
+    width: 50%;
+    left: 15%;
+    position: relative;
+    text-align: center;
+    margin: 0 250px;
+}
