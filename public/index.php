@@ -26,6 +26,7 @@ session_start();
 
         </div>
     </div>
+    <?php require('../app/connect.php'); ?>
     <?php require('templates/footer.php'); ?>
 </body>
 </html>
