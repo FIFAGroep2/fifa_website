@@ -61,15 +61,9 @@ h4{
 
 /* MAIN */
 .main{
-    width: 70%;
-    left: 15%;
-    top: 1px;
+    width: 100%;
     position: relative;
     text-align: center;
-    border: 1px solid #888888;
-}
-.main .header {
-    border-bottom: 1px solid #888888;
 }
 
 /* FOOTER */
@@ -99,4 +93,90 @@ tr:nth-child(even) {
 }
 .header-userrank{
     margin: 60px 0 0 0;
+}
+
+/*===============================================CREATE TEAM PHP =================================================*/
+i{
+    color: #FF0000;
+    margin-left: 10px;
+}
+.header-border{
+    height: 100px;
+    max-width: 1400px;
+    width: 100%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.input-border{
+    height: auto;
+    max-width: 1400px;
+    width: 100%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.input-border-txt{
+    max-width: 300px;
+    width: 100%;
+    margin-top: -10px;
+    margin-left: 10px;
+    background: white;
+}
+.input-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.input-player{
+    display: flex;
+    flex-flow: column;
+}
+.input-player-block{
+    max-width: 200px;
+    width: 100%;
+    padding: 10px;
+    margin: 15px auto;
+    border: 1px solid black;
+}
+.input-button{
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 32px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 25px 5px;
+    -webkit-transition: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 75%;
+}
+.input-button:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+.input-team-name[type=text] {
+    width: 70%;
+    padding: 16px 12px;
+    margin: 60px 5px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.input-team-name[type=text]:focus {
+    border: 3px solid #4CAF50;
+}
+.team-name{
+    width: 100%;
+    margin: 25px auto;
+    font-size: 1.5em;
+}
+.red-x{
+    margin-left: 15px;
+    max-width: 20px;
+    width: 100%;
+    height: 20px;
 }
