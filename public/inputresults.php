@@ -18,11 +18,8 @@ require('../app/connect.php');
     <div class="main">
         <div class="header">
             <h2>FIFA Dev Edition</h2>
-            <h3>Resultaten</h3>
+            <h3>Wedstrijden</h3>
         </div>
-
-
-
         <div class="content">
 
         </div>
