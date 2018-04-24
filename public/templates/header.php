@@ -17,7 +17,8 @@
         ?>
         <nav>
             <a href="/index.php"><i class="fas fa-trophy"></i>Wedstrijden</a>
-            <a href=""><i class="fas fa-star"></i>Resultaten</a>
+            <a href="resultaten.php"><i class="fas fa-star"></i>Resultaten</a>
+            <a href="finales.php"><i class="fas fa-star"></i>Finales</a>
             <?php
             if(!isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] == false) {
             ?>
