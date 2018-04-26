@@ -1,1 +1,0 @@
-Dit is een simpele test voor de Git
