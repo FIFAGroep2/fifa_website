@@ -57,6 +57,7 @@ body{
 
 /* MAIN */
 .main{
+<<<<<<< HEAD
     width: 100%;
     position: relative;
     text-align: center;
@@ -81,6 +82,12 @@ float:  left;
 max-width: 430px;
 
 width:  100%;
+=======
+    width: 70%;
+    left: 15%;
+    position: relative;
+    text-align: center;
+>>>>>>> parent of 8ecdadf... Update last style
 }
 
 .deel1{

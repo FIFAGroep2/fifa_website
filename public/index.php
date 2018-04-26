@@ -1,6 +1,5 @@
 <?php
 session_start();
-require('../app/connect.php');
 ?>
 <!doctype html>
 <html lang="en" class="dashboard">
@@ -30,6 +29,7 @@ require('../app/connect.php');
 
         </div>
     </div>
+    <?php require('../app/connect.php'); ?>
     <?php require('templates/footer.php'); ?>
 </body>
 </html>
