@@ -57,11 +57,9 @@ body{
 
 /* MAIN */
 .main{
-    width: 50%;
-    left: 15%;
+    width: 100%;
     position: relative;
     text-align: center;
-    margin: 0 250px;
 }
 
 
