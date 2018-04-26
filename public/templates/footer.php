@@ -9,7 +9,7 @@
                 <th>Score</th>
             </tr>
             <?php
-            header('Content-Type: text/html; charset=ISO-8859-1');
+            //header('Content-Type: text/html; charset=ISO-8859-1');
             $teams = $server->prepare("SELECT * FROM `tbl_teams` ORDER BY `score` DESC");
             $teams->execute();
             $teams = $teams->fetchAll();

@@ -4,6 +4,7 @@
             <h1>Fifa</h1>
         </div>
         <?php
+        header('Content-Type: text/html; charset=ISO-8859-1');
         if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
             echo '<p>Je bent ingelogt als ADMIN</p>';
         } elseif (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true) {

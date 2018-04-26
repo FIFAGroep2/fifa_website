@@ -1,4 +1,4 @@
-/* ALGEMEEN */
+/*================= ALGEMEEN =================== */
 *{
     font-family: 'Arial', sans-serif;
 }
@@ -7,9 +7,12 @@ body{
     padding: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+h4{
 }
 
-/* HEADER */
+/*================= HEADER =================== */
 #header{
     background: rgb(0, 230, 0);
     height: 100vh;
@@ -35,10 +38,10 @@ body{
     padding: 20px 15px;
     display: block;
     background: linear-gradient(to left,
-    transparent,
-    transparent 50%,
-    rgb(0, 200, 10) 50%,
-    rgb(0, 200, 10));
+        transparent,
+        transparent 50%,
+        rgb(0, 200, 10) 50%,
+        rgb(0, 200, 10));
     background-position: 100% 0;
     background-size: 200% 100%;
     transition: background .5s ease-in-out;
@@ -55,34 +58,154 @@ body{
     background-position: 0 0;
 }
 
-/* MAIN */
+/*================= MAIN =================== */
 .main{
-    width: 50%;
-    left: 15%;
+    width: 100%;
     position: relative;
     text-align: center;
-    margin: 0 250px;
 }
 
+/*============== FOOTER ================ */
 
-/* RESULTATEN */
+#footer{
+    width: 250px;
+    height: 100vh;
+    right: 0;
+    background-color: rgb(240,240,240);
+    position: fixed;
+    text-align: center;
+    color: #000;
+}
+
+#footer .container *{
+    margin-left: auto;
+    margin-right: auto;
+}
+table {
+    border-collapse: collapse;
+    width: 95%;
+    background: rgb(255, 255, 255);
+}
+td, th {
+    min-width: 15px;
+    text-align: left;
+    border: 1px solid #cccccc;
+}
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+.name{
+    width: 150px;
+}
+.header-userrank{
+    margin: 60px 0 0 0;
+}
+
+/*==============CREATE TEAM PHP ==============*/
+i{
+    color: #FF0000;
+    margin-left: 10px;
+}
+.header-border{
+    height: 100px;
+    max-width: 1400px;
+    width: 100%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.input-border{
+    height: auto;
+    max-width: 1400px;
+    width: 100%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.input-border-txt{
+    max-width: 300px;
+    width: 100%;
+    margin-top: -10px;
+    margin-left: 10px;
+    background: white;
+}
+.input-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.input-player{
+    display: flex;
+    flex-flow: column;
+}
+.input-player-block{
+    max-width: 200px;
+    width: 100%;
+    padding: 10px;
+    margin: 15px auto;
+    border: 1px solid black;
+}
+.input-button{
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 32px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 25px 5px;
+    -webkit-transition: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 75%;
+}
+.input-button:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+.input-team-name[type=text] {
+    width: 70%;
+    padding: 16px 12px;
+    margin: 60px 5px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.input-team-name[type=text]:focus {
+    border: 3px solid #4CAF50;
+}
+.team-name{
+    width: 100%;
+    margin: 25px auto;
+    font-size: 1.5em;
+}
+.red-x{
+    margin-left: 15px;
+    max-width: 20px;
+    width: 100%;
+    height: 20px;
+}
+
+/*============== RESULTATEN ================ */
 .part1{
 
-display: flex;
+    display: flex;
 
-justify-content:  center;
+    justify-content:  center;
 
-border:  1px black solid;
+    border:  1px black solid;
 
-background-color: #ddffb6;
+    background-color: #ddffb6;
 
-padding: 0 20px;
+    padding: 0 20px;
 
-float:  left;
+    float:  left;
 
-max-width: 430px;
+    max-width: 430px;
 
-width:  100%;
+    width:  100%;
 }
 
 .deel1{
@@ -96,29 +219,29 @@ width:  100%;
 
 .deel1 h4{
 
-padding-right: 100px;
+    padding-right: 100px;
 
-border: black 1px solid;
+    border: black 1px solid;
 
-background-color: #88ff00;
+    background-color: #88ff00;
 }
 
 .deel2 h4{
 
-padding: 0 20px;
+    padding: 0 20px;
 
-border: black 1px solid;
+    border: black 1px solid;
 
-background-color: #40a72c;
+    background-color: #40a72c;
 }
 
 .deel3 h4{
 
-padding-left:  100px;
+    padding-left:  100px;
 
-border: black 1px solid;
+    border: black 1px solid;
 
-background-color: #88ff00;
+    background-color: #88ff00;
 }
 
 .part{
@@ -127,25 +250,25 @@ background-color: #88ff00;
 
 .part2{
 
-display: grid;
+    display: grid;
 
-border:  1px black solid;
+    border:  1px black solid;
 
-padding: 0 20px;
+    padding: 0 20px;
 
-float:  left;
+    float:  left;
 
-background-color: #ddffb6;
+    background-color: #ddffb6;
 
-text-align:  left;
+    text-align:  left;
 
-justify-content:  center;
+    justify-content:  center;
 
-margin-top: 5px;
+    margin-top: 5px;
 
-max-width: 430px;
+    max-width: 430px;
 
-width: 100%;
+    width: 100%;
 }
 
 .schema{
@@ -162,136 +285,69 @@ width: 100%;
     padding-right: 60px;
 }
 
-/*  Finales */
+.content{
 
-.round {
-    float: left;
-}
-.round-deel2 {
-    float: right;
-}
-.round.r-of-4 {
-
-}
-.round.r-of-4-deel2 {
-
-    float:  right;
-}
-.round.r-of-2 {
-    margin-top: 25px;
-}
-.round.r-of-2-deel2 {
-    margin-top: 25px;
-}
-.bracket-game {
-    max-width: 125px;
-    margin: 10px 0;
-}
-.player {
-    min-width: 100px;
-    border: 1px solid #AAA;
-    padding-left: 10px;
-}
-.player.top {
-    border-radius: 3px 3px 0 0;
-}
-.player.bot {
-    border-radius: 0 0 3px 3px;
-}
-.player .score {
-    display: inline;
-    float: right;
-    border-left: 1px solid #AAA;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: #EEE;
-}
-.player.win {
-    background-color: #B8F2B8;
-}
-.player.loss {
-    background-color: #F2B8B8;
-}
-.connectors {
-    float: left;
-    min-width: 35px;
-}
-.connectors-deel2 {
-    float: left;
-    min-width: 35px;
-}
-.connectors.r-of-2 .top-line {
-    position: relative;
-    top: 30px;
-    width: 17px;
-    border: 1px solid #AAA;
-}
-.connectors-deel2.r-of-2-deel2 .top-line-deel2 {
-    position: relative;
-    top: 30px;
-    width: 17px;
-    border: 1px solid #AAA;
+    display: grid;
+    justify-content: center;
 }
 
-.connectors.r-of-2 .bottom-line {
-    position: relative;
-    top: 81px;
-    width: 17px;
-    border: 1px solid #AAA;
-}
-.connectors-deel2.r-of-2-deel2 .bottom-line-deel2 {
-    position: relative;
-    top: 81px;
-    width: 17px;
-    border: 1px solid #AAA;
-}
-.connectors.r-of-2 .vert-line {
-    position: relative;
-    top: 26px;
-    left: -16px;
-    height: 55px;
-    border-right: 2px solid #AAA;
-}
-.connectors-deel2.r-of-2-deel2 .vert-line-deel2 {
-    position: relative;
-    top: 26px;
-    left: -16px;
-    height: 55px;
-    border-right: 2px solid #AAA;
-}
-.connectors.r-of-2 .next-line {
-    position: relative;
-    top: -4px;
-    left: 17px;
-    width: 17px;
-    border: 1px solid #AAA;
-}
-.connectors-deel2.r-of-2-deel2 .next-line-deel2 {
-    position: relative;
-    top: -4px;
-    left: 17px;
-    width: 17px;
-    border: 1px solid #AAA;
-}
-.clear {
-    clear: both;
-}
-.clear-deel2 {
-    clear: both;
+#merk{
+    color: #17a217;
 }
 
-.deel1-finales{
+/*============== Index ================ */
 
-
+.main-content, ul {
+  display:flex;
+  justify-content:  center;
 }
 
-.deel2-finales{
-
-
+ul {
+  flex-direction:column;
+  /* width: 200px; */
+  list-style:none;
+  padding:0;
 }
 
-.deel-finales{
+.game + li {
+  flex-grow:1;
+}
+
+li:first-child,li:last-child {
+  flex-grow:.5;
+}
+
+.game {
+  padding-left:20px;
+}
+
+.winner {
+  font-weight:bold;
+}
+
+.game span {
+  float:right;
+  margin-right:5px;
+}
+
+.game-top {
+  border-bottom:1px solid #aaa;
+}
+
+.game-top + li {
+  border-right:1px solid #aaa; min-height:40px;
+}
+
+.game-bottom {
+  border-top:1px solid #aaa;
+}
+
+.deel2-main-content{
+
     display: flex;
-    justify-content: space-between;
+}
 
+.deel1-main-content{
+
+    display: flex;
 }
