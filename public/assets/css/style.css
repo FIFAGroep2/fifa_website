@@ -1,4 +1,4 @@
-/* ALGEMEEN */
+/* ===========================================ALGEMEEN======================================== */
 *{
     font-family: 'Arial', sans-serif;
 }
@@ -7,13 +7,18 @@ body{
     padding: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+h4{
+    margin: 40px 0 0 0;
 }
 
-/* HEADER */
+/* ==========================================HEADER============================================ */
 #header{
     background: rgb(0, 230, 0);
     height: 100vh;
     position: fixed;
+    z-index: 1;
 }
 #header .container{
     display: flex;
@@ -55,10 +60,214 @@ body{
     background-position: 0 0;
 }
 
-/* MAIN */
+/* ===================================MAIN =============================================*/
 .main{
     width: 100%;
     position: relative;
     text-align: center;
 }
 
+/* ===============================================FOOTER =====================================*/
+#footer{
+    width: 15%;
+    right: 0;
+    position: fixed;
+    text-align: center;
+    color: #000;
+}
+table {
+    border-collapse: collapse;
+    width: 95%;
+    background: rgb(255, 255, 255);
+}
+td, th {
+    min-width: 15px;
+    text-align: left;
+    border: 1px solid #cccccc
+}
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+.name{
+    width: 150px;
+}
+.header-userrank{
+    margin: 60px 0 0 0;
+}
+
+/*===============================================CREATE TEAM PHP =================================================*/
+i{
+    color: #FF0000;
+    margin-left: 10px;
+}
+.header-border{
+    position: relative;
+    height: 100px;
+    width: 70%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.input-border{
+    position: absolute;
+    height: auto;
+    width: 70%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.input-border-txt{
+    max-width: 300px;
+    width: 100%;
+    margin-top: -10px;
+    margin-left: 10px;
+    background: white;
+}
+.input-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.input-player{
+    display: flex;
+    flex-flow: column;
+}
+.input-player-block{
+    max-width: 200px;
+    width: 100%;
+    padding: 10px;
+    margin: 15px auto;
+    border: 1px solid black;
+}
+.input-button{
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 32px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 25px 5px;
+    -webkit-transition: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 75%;
+}
+.input-button:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+.input-team-name[type=text] {
+    width: 70%;
+    padding: 16px 12px;
+    margin: 60px 5px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.input-team-name[type=text]:focus {
+    border: 3px solid #4CAF50;
+}
+.team-name{
+    width: 100%;
+    margin: 25px auto;
+    font-size: 1.5em;
+}
+.red-x{
+    margin-left: 15px;
+    max-width: 20px;
+    width: 100%;
+    height: 20px;
+}
+
+
+/* ==========================================RESULTATEN ===========================================*/
+.team-time{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-roster{
+    display: flex;
+    justify-content:  center;
+    border:  1px black solid;
+    background-color: #ddffb6;
+    padding: 20px;
+    width:  50%;
+}
+
+.left-row{
+    margin-right: 100px;
+    width: 30%;
+}
+
+.right-row{
+    margin-left: 100px;
+    width: 30%;
+}
+
+.left-row h4{
+    padding: 10px;
+    border: black 1px solid;
+    background-color: #88ff00;
+}
+
+.middle-row{
+    width: 20%;
+}
+
+.middle-row h4{
+    padding: 10px;
+    border: black 1px solid;
+    background-color: #40a72c;
+}
+
+.right-row h4{
+    padding: 10px;
+    border: black 1px solid;
+    background-color: #88ff00;
+}
+
+.time-scheme{
+    border:  1px black solid;
+    padding: 20px;
+    float:  left;
+    background-color: #ddffb6;
+    text-align:  center;
+    margin: 20px;
+    width: 50%;
+}
+
+.scheme{
+    display: flex;
+    justify-content: center;
+}
+
+.left-row-time, .middle-row-time, .right-row-time{
+    border: 1px dashed #000;
+    margin: 0 20px;
+    padding: 0 50px;
+}
+
+.change-time{
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 32px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 25px 5px;
+    -webkit-transition: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 100%;
+}
+.change-time:hover{
+    background-color: #4CAF50;
+    color: white;
+}
