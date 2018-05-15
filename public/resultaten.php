@@ -2,7 +2,7 @@
 session_start();
 require ('../app/connect.php');
 
-$select_teams= $server->prepare('SELECT * FROM `tbl_teams`');
+$select_teams= $server->prepare('SELECT * FROM `tbl_matches`');
 $select_teams->execute();
 $results = $select_teams->fetchAll();
 
@@ -30,22 +30,30 @@ $results = $select_teams->fetchAll();
         <div class="team-roster">
             <div class="left-row">
                 <?php
-                foreach ($results as $team){
-                    echo '<h4>' . $team['name'] . '</h4>';
+                foreach ($results as $team1){
+                    $teamid = $team1['team_id_a'];
+                    $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
+                    $teamname->execute();
+                    $name = $teamname->fetch();
+                    echo '<h4>' . $name['name'] . '</h4>';
                 }
                 ?>
             </div>
 
             <div class="middle-row">
                 <?php foreach ($results as $team){
-                    echo '<h4>' . $team['score'] . '-' . $team['score'] .  '</h4>';
+                    echo '<h4>' . $team['score_team_a'] . '-' . $team['score_team_b'] .  '</h4>';
                 }
                 ?>
             </div>
 
             <div class="right-row">
-                <?php foreach ($results as $team){
-                    echo '<h4>' . $team['name'] . '</h4>';
+                <?php foreach ($results as $team2){
+                    $teamid = $team2['team_id_b'];
+                    $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
+                    $teamname->execute();
+                    $name = $teamname->fetch(PDO::FETCH_ASSOC);
+                    echo '<h4>' . $name['name'] . '</h4>';
                 }
                 ?>
             </div>
@@ -58,7 +66,11 @@ $results = $select_teams->fetchAll();
                 <div class="left-row-time">
                     <h3>Team</h3>
                     <?php foreach ($results as $team){
-                        echo '<p>' . $team['name'] . '</p>';
+                        $teamid = $team['team_id_a'];
+                        $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
+                        $teamname->execute();
+                        $name = $teamname->fetch(PDO::FETCH_ASSOC);
+                        echo '<p>' . $name['name'] . '</p>';
                     }
                     ?>
                 </div>
@@ -66,18 +78,21 @@ $results = $select_teams->fetchAll();
                 <div class="middle-row-time">
                     <h3>Team</h3>
                     <?php foreach ($results as $team){
-                        echo '<p>' . $team['name'] . '</p>';
+                        $teamid = $team['team_id_b'];
+                        $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
+                        $teamname->execute();
+                        $name = $teamname->fetch(PDO::FETCH_ASSOC);
+                        echo '<p>' . $name['name'] . '</p>';
                     }
                     ?>
                 </div>
 
                 <div class="right-row-time">
                     <h3>Tijd</h3>
-                    <p>10:00</p>
-                    <p>10:15</p>
-                    <p>10:30</p>
-                    <p>10:45</p>
-                    <p>11:00</p>
+                    <?php foreach ($results as $time){
+                        echo '<p>' . $time['start_time'] . '</p>';
+                    }
+                    ?>
                 </div>
 
                 <form action="../app/edit-time.php" method="POST">
