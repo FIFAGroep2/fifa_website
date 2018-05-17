@@ -27,77 +27,65 @@ $results = $select_teams->fetchAll();
     </div>
 
     <div class="team-time">
-        <div class="team-roster">
-            <div class="left-row">
-                <?php
-                foreach ($results as $team1){
-                    $teamid = $team1['team_id_a'];
-                    $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
-                    $teamname->execute();
-                    $name = $teamname->fetch();
-                    echo '<h4>' . $name['name'] . '</h4>';
-                }
-                ?>
-            </div>
-
-            <div class="middle-row">
-                <?php foreach ($results as $team){
-                    echo '<h4>' . $team['score_team_a'] . '-' . $team['score_team_b'] .  '</h4>';
-                }
-                ?>
-            </div>
-
-            <div class="right-row">
-                <?php foreach ($results as $team2){
-                    $teamid = $team2['team_id_b'];
-                    $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
-                    $teamname->execute();
-                    $name = $teamname->fetch(PDO::FETCH_ASSOC);
-                    echo '<h4>' . $name['name'] . '</h4>';
-                }
-                ?>
-            </div>
-        </div>
-
         <div class="time-scheme">
+            <form action="../app/update-time.php" method="POST">
             <h3>Tijd Regeling</h3>
 
             <div class="scheme">
                 <div class="left-row-time">
                     <h3>Team</h3>
-                    <?php foreach ($results as $team){
+                    <?php
+                    $count = 1;
+                    foreach ($results as $team){
                         $teamid = $team['team_id_a'];
                         $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
                         $teamname->execute();
                         $name = $teamname->fetch(PDO::FETCH_ASSOC);
-                        echo '<p>' . $name['name'] . '</p>';
+                        $name = $name['name'];
+                        echo "<input type='text' class='team-input' name='teama$count' value='$name' disabled readonly>";
+                        $count++;
                     }
                     ?>
                 </div>
 
                 <div class="middle-row-time">
                     <h3>Team</h3>
-                    <?php foreach ($results as $team){
+                    <?php
+                    $count = 1;
+                    foreach ($results as $team){
                         $teamid = $team['team_id_b'];
                         $teamname = $server->prepare("SELECT `name` FROM `tbl_teams` WHERE `id` = '$teamid'");
                         $teamname->execute();
                         $name = $teamname->fetch(PDO::FETCH_ASSOC);
-                        echo '<p>' . $name['name'] . '</p>';
+                        $name = $name['name'];
+                        echo "<input type='text' class='team-input' name='teamb$count' value='$name' disabled readonly>";
+                        $count++;
                     }
                     ?>
                 </div>
 
                 <div class="right-row-time">
-                    <h3>Tijd</h3>
+                    <h3 class="time">Tijd</h3>
+
                     <?php foreach ($results as $time){
-                        echo '<p>' . $time['start_time'] . '</p>';
+                        $time = $time['start_time'];
+                        echo "<input type='text' class='input-time' name='input-time' id='input-time' value='$time'>";
                     }
                     ?>
+                        <input type="submit" id="submit-input-time" name="submit-input-time" class="input-button" value="Update Tijd">
+                        <div class="get-message">
+                            <?php
+                            if (isset($_GET['message'])){
+                                echo '<h2>';
+                                echo $_GET['message'];
+                                echo '</h2>';
+                            }else{
+                                echo '<p></p>';
+                            }
+                            ?>
+                        </div>
+                    </form>
                 </div>
-
-                <form action="edit-time.php" method="POST">
-                    <input type="submit" id="submit-change-time" name="submit-change-time" class="change-time" value="Bewerk Tijd">
-                </form>
             </div>
         </div>
     </div>
