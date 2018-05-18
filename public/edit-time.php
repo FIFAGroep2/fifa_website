@@ -42,7 +42,7 @@ $results = $select_teams->fetchAll();
                         $teamname->execute();
                         $name = $teamname->fetch(PDO::FETCH_ASSOC);
                         $name = $name['name'];
-                        echo "<input type='text' class='team-input' name='teama$count' value='$name' disabled readonly>";
+                        echo "<input type='text' class='team-input' id='teama$count' name='teama$count' value='$name' readonly>";
                         $count++;
                     }
                     ?>
@@ -58,7 +58,7 @@ $results = $select_teams->fetchAll();
                         $teamname->execute();
                         $name = $teamname->fetch(PDO::FETCH_ASSOC);
                         $name = $name['name'];
-                        echo "<input type='text' class='team-input' name='teamb$count' value='$name' disabled readonly>";
+                        echo "<input type='text' class='team-input' id='teama$count' name='teamb$count' value='$name' readonly>";
                         $count++;
                     }
                     ?>
@@ -67,25 +67,29 @@ $results = $select_teams->fetchAll();
                 <div class="right-row-time">
                     <h3 class="time">Tijd</h3>
 
-                    <?php foreach ($results as $time){
+                    <?php
+                    $count = 1;
+                    foreach ($results as $time){
                         $time = $time['start_time'];
-                        echo "<input type='text' class='input-time' name='input-time' id='input-time' value='$time'>";
+                        echo "<div>";
+                        echo "<input type='text' class='input-time' name='input-time$count' id='input-time$count' value='$time'>";
+                        echo "</div>";
+                        $count++;
                     }
                     ?>
-                        <input type="submit" id="submit-input-time" name="submit-input-time" class="input-button" value="Update Tijd">
-                        <div class="get-message">
-                            <?php
-                            if (isset($_GET['message'])){
-                                echo '<h2>';
-                                echo $_GET['message'];
-                                echo '</h2>';
-                            }else{
-                                echo '<p></p>';
-                            }
-                            ?>
-                        </div>
-                    </form>
-                </div>
+                    <input type='submit' id='submit-input-time submit$count' name='submit-input-time submit$count' class='input-button' value='Update Tijd'>
+                    <div class="get-message">
+                        <?php
+                        if (isset($_GET['message'])){
+                            echo '<h2>';
+                            echo $_GET['message'];
+                            echo '</h2>';
+                        }else{
+                            echo '<p></p>';
+                        }
+                        ?>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
