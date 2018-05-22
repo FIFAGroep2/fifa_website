@@ -22,8 +22,10 @@ $results = $select_teams->fetchAll();
 <?php require('templates/header.php'); ?>
 <div class="main">
     <div class="header">
-        <h2>FIFA Dev Edition</h2>
-        <h3>Resultaten</h3>
+        <div class="header-border-result">
+            <h2>FIFA Dev Edition</h2>
+            <h3>Resultaten</h3>
+        </div>
     </div>
 
     <div class="team-time">
@@ -60,7 +62,7 @@ $results = $select_teams->fetchAll();
         </div>
 
         <div class="time-scheme">
-            <h3>Tijd Regeling</h3>
+            <h3>Tijd schema</h3>
 
             <div class="scheme">
                 <div class="left-row-time">
@@ -94,10 +96,6 @@ $results = $select_teams->fetchAll();
                     }
                     ?>
                 </div>
-
-                <form action="edit-time.php" method="POST">
-                    <input type="submit" id="submit-change-time" name="submit-change-time" class="change-time" value="Bewerk Tijd">
-                </form>
             </div>
         </div>
     </div>

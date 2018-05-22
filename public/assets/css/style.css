@@ -12,6 +12,10 @@ body{
 h4{
     margin: 40px 0 0 0;
 }
+.header{
+    display: flex;
+    justify-content: center;
+}
 
 /* ==========================================HEADER============================================ */
 #header{
@@ -74,6 +78,7 @@ h4{
     position: fixed;
     text-align: center;
     color: #000;
+    top: 0;
 }
 table {
     border-collapse: collapse;
@@ -184,16 +189,23 @@ i{
 
 
 /* ==========================================RESULTATEN ===========================================*/
+.header-border-result{
+    position: relative;
+    height: 100px;
+    width: 60%;
+    border: 2px solid black;
+    margin: 20px 350px;
+}
+
 .team-time{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
 }
 
 .team-roster{
     display: flex;
-    justify-content:  space-between;
+    justify-content:  center;
     border:  1px black solid;
     background-color: #ddffb6;
     padding: 20px;
@@ -201,10 +213,12 @@ i{
 }
 
 .left-row{
+    margin-right: 100px;
     width: 30%;
 }
 
 .right-row{
+    margin-left: 100px;
     width: 30%;
 }
 
@@ -231,35 +245,35 @@ i{
 }
 
 .time-scheme{
-    border:  1px black solid;
+    border: 1px black solid;
     padding: 20px;
-    float:  left;
+    float: left;
     background-color: #ddffb6;
-    text-align:  center;
+    text-align: center;
     margin: 20px;
     width: 50%;
+    position: relative;
 }
+
+
 
 .scheme{
     display: flex;
     justify-content: center;
 }
-.scheme h3{
-    margin: 0 0 10px 0;
-}
-.scheme p{
-    margin: 0 0 10px 0;
-}
+
 .left-row-time, .middle-row-time, .right-row-time{
     border: 1px dashed #000;
     margin: 0 20px;
-    padding: 0 30px;
+    padding: 0 50px;
 }
+
 .change-time{
     background-color: white;
+    float: right;
     color: black;
     border: 2px solid #4CAF50;
-    padding: 32px 16px;
+    padding: 20px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -268,14 +282,276 @@ i{
     -webkit-transition: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 100%;
+    position: absolute;
+    right: 0;
+    top: -18px;
 }
 .change-time:hover{
     background-color: #4CAF50;
     color: white;
 }
 
-/* ==========================================EDIT TIME ===========================================*/
+/*============================ Index ============================ */
+
+.main-content{
+    display:  flex;
+    justify-content:  space-around;
+}
+
+.border-finales{
+    margin: 0 auto;
+    border: 2px solid #000000;
+    width: 70%;
+    height: 800px;
+    position: absolute;
+    left: 350px;
+    top: 155px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pouleresult-main{
+    border: 2px solid #000;
+    width: 80%;
+    padding: 20px;
+    margin: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 6%;
+}
+
+.poule-names{
+    display: flex;
+    justify-content: space-around;
+}
+
+.pouleresults{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.teams-left{
+    margin-left: -80px;
+}
+
+.teams-score{
+    margin: 15px auto;
+    color: #01541b;
+}
+
+.word-pouleresult{
+    margin-bottom: 0;
+    color: #8d7d17;
+}
+
+.bracket-box{
+    position: relative;
+}
+
+.left-bracket{
+    position: absolute;
+    left: 120px;
+    top: 75px;
+}
+
+.right-bracket{
+    position: absolute;
+    right: 120px;
+    top: 75px;
+}
+.border-line-top{
+    position: absolute;
+    top: 39px;
+    left: 60px;
+}
+
+.border-line-bottom{
+    position: absolute;
+    bottom: 39px;
+    left: 60px;
+}
+
+.border-line-top, .border-line-bottom, .border-line-middle, .border-line-middle-left, .border-line-middle-right{
+    border: 1px solid green;
+    height: 12.5%;
+    width: 0;
+    margin: 0 auto;
+}
+
+.left-teams-name, .right-teams-name, .left-teams-name-2nd, .right-teams-name-2nd, .middle-teams-name-left, .middle-teams-name-right{
+    padding: 10px;
+    border: 1px solid green;
+    width: 100px;
+}
+
+.left-teams-name{
+    margin: 35px auto;
+}
+
+.right-teams-name{
+    margin: 35px auto;
+}
+
+.left-teams-name-2nd{
+    margin: 100px auto;
+    position: relative;
+    top: -98px;
+    left: 135px;
+}
+.right-teams-name-2nd{
+    margin: 100px auto;
+    position: relative;
+    top: -98px;
+    right: 257px;
+}
+
+.middle-teams-name-left{
+    position: relative;
+    top: 205px;
+    left: -130px;
+}
+
+.middle-teams-name-right{
+    position: relative;
+    top: 149px;
+    right: -130px;
+}
+
+.border-line-right{
+    border-bottom: 2px solid green;
+    width: 135px;
+    position: absolute;
+    top: 15px;
+    left: 0;
+}
+
+.border-line-left{
+    border-bottom: 2px solid green;
+    width: 135px;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.border-line-middle{
+    position: absolute;
+    bottom: 550px;
+    left: 670px;
+}
+.border-line-middle-left{
+    position: absolute;
+    bottom: 507px;
+    left: 375px;
+}
+.border-line-middle-right{
+    position: absolute;
+    bottom: 507px;
+    left: 965px;
+}
+.winner-block{
+    padding: 10px;
+    border: 1px solid green;
+    width: 100px;
+    position: absolute;
+    top: 10%;
+}
+/*==========================================INPUT RESULT ===================================*/
+.header-border-invoer{
+    position: relative;
+    height: 100px;
+    width: 60%;
+    border:2px solid black;
+    margin: 20px 350px;
+}
+.border-invoer{
+    margin: 10px auto;
+    border: 2px solid #000000;
+    width: 60%;
+    height: auto;
+    left: 350px;
+    top: 155px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.time-scheme-input{
+    border: 1px black solid;
+    padding: 20px;
+    float: left;
+    background-color: #ddffb6;
+    text-align: center;
+    margin: 20px;
+    width: 70%;
+    position: relative;
+}
+
+.invoer-resultaten{
+    border: 1px solid black;
+    width: 80%;
+    height: 100%;
+    padding: 40px;
+    margin: 20px;
+}
+.invoer-team-selecteren{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.invoer-team-selecteren select {
+    width: 20%;
+}
+
+.resultaten-block{
+    display:  flex;
+    justify-content:  space-evenly;
+}
+
+.invoer-resultaten h2{
+    border: 2px solid;
+    padding: 21px 20px;
+    font-size: 60px;
+    color: #630000;
+}
+
+.invoer-scoorer{
+    display:  flex;
+    justify-content: space-evenly;
+}
+
+.invoer-scoorer-left select{
+    margin-right: 5px;
+}
+
+.invoer-scoorer-left a{
+    text-decoration:  none;
+    color: white;
+    border: 2px solid green;
+    background-color: green;
+    padding: 0px 5px;
+}
+
+.invoer-submit{
+    margin-top: 30px;
+}
+.right-row-time p, .left-row-time p, .middle-row-time p{
+    margin: 10px auto;
+}
+.btn {
+    text-decoration: none;
+    color: white;
+    border: 2px solid green;
+    background-color: green;
+    padding: 10px 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*==================================================EDIT TIME ===============================================*/
 #submit-input-time{
     margin: 5px 5px;
     max-width: 20%;
@@ -299,13 +575,10 @@ input[type=text] {
 }
 .scheme .right-row-time{
     width: 30%;
-    display: flex;
-    flex-direction: column;
 }
 .right-row-time div{
     display: flex;
     justify-content: space-between;
-    height: 33px;
 }
 .right-row-time .input-button{
     height: 33px;
@@ -329,4 +602,94 @@ input[type=text] {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
+}
+/*================================================== REGISTER ========================================================*/
+#register{
+    display: flex;
+    justify-content: center;
+}
+
+#register .form{
+    text-align: center;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    margin-top: 100px;
+    padding-bottom: 20px;
+    width: 25%;
+}
+
+#register .button{
+    background-color: rgb(0,230,0);
+    color: white;
+    border: none;
+    width: 17%;
+    padding: 10px;
+    margin-left: 91px;
+}
+
+#register .labels{
+    display: flex;
+    flex-direction: column;
+}
+
+#register .dnummer{
+    margin-bottom: 10px;
+    margin-right: 85px;
+}
+
+#register .voornaam{
+    margin-bottom: 10px;
+    margin-right: 82px;
+}
+
+#register .achternaam{
+    margin-bottom: 10px;
+    margin-right: 96px;
+}
+
+#register .wachtwoord{
+    margin-bottom: 10px;
+    margin-right: 98px;
+}
+
+.container h3{
+    text-align: center;
+}
+
+/*==================================================== LOGIN =========================================================*/
+#login{
+    display:flex;
+    justify-content: center;
+}
+
+#login .form{
+    text-align: center;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    margin-top: 100px;
+    padding-bottom: 20px;
+    width:25%;
+}
+
+#login .button{
+    background-color: rgb(0,230,0);
+    color: white;
+    border: none;
+    width: 17%;
+    padding: 10px;
+    margin-left: 185px;
+    margin-top: 12px;
+}
+#login .dnummer{
+    margin-bottom: 10px;
+}
+
+#login .wachtwoord{
+    margin-right: 12px;
+}
+
+.container h3{
+    text-align: center;
 }

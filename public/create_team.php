@@ -12,7 +12,7 @@ $rows = $players->rowCount();
 $players = $players->fetchAll();
 
 $maxPlayers = 8;
-
+$_SESSION['maxPlayers'] = $maxPlayers;
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 ?>
@@ -30,11 +30,9 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 <body>
     <?php require('templates/header.php'); ?>
     <div class="main">
-        <div class="header">
-            <div class="header-border">
-                <h2>FIFA DEV EDITION</h2>
-                <h3>Invoer Teams en Spelers</h3>
-            </div>
+        <div class="header-border">
+            <h2>FIFA DEV EDITION</h2>
+            <h3>Invoer Teams en Spelers</h3>
         </div>
 
         <div class="content">
@@ -64,13 +62,14 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                         <div class="input-player">
                             <?php for ($i = 1; $i <= $maxPlayers; $i++):?>
                                 <div class="input-player-block">
-                                    <label for="<?php echo $i+1; ?>">Selecteer speler:</label>
-                                    <select class="player-option" id="<?php echo $i+1; ?>">
-                                        <option disabled selected value> -- Selecteer speler -- </option>
+                                    <label for="select_id<?php echo $i; ?>">Selecteer speler:</label>
+                                    <select name="player_select<?php echo $i; ?>" id="select_id<?php echo $i; ?>">
+                                        <option disabled selected value="0"> -- Selecteer speler -- </option>
                                         <?php
-                                            foreach ($players as $player) {
-                                                $_SESSION['player_id'] = $player['id'];
-                                                echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                        foreach ($players as $player){
+                                                if ($player['team_id'] == NULL){
+                                                    echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                                }
                                             }
                                         ?>
                                     </select>
