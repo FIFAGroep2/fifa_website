@@ -44,5 +44,6 @@ for($i = 1; $i <= $count; $i++) {
         }
     }
 }
+header('Location: ../public/edit-time.php?message=Tijden succesvol geupdate')
 
 ?>
