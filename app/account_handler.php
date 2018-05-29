@@ -16,11 +16,11 @@ if (isset($_POST['btnregister'])) {
 
 
         if($result > 0){
-            header("location: ../public/login_register.php?message=Dit dnummer is al in gebruik.");
+            header("location: ../public/login_register.php?message=Dit d-nummer is al in gebruik.");
             exit;
         }
 
-        if(strlen($password) <8){
+        if(strlen($password) < 8){
             header("location: ../public/login_register.php?message=Uw wachtwoord moet minimaal 8 tekens bevatten.");
             exit;
         }
@@ -35,12 +35,14 @@ if (isset($_POST['btnregister'])) {
             exit;
         }
 
-        if (strlen($username) >13){
+        if (strlen($username) > 13){
             header("location: ../public/login_register.php?message=Uw dnummer kan maximaal 13 karakters bevatten.");
             exit;
         }
 
         else {
+
+            $password = password_hash($password, PASSWORD_DEFAULT);
             $sql_insert = "INSERT INTO `tbl_users`(`student_id`, `first_name`, `last_name`, `password`) VALUES (:username, :fname, :lname, :password)";
 
             $stmt = $server->prepare($sql_insert);
@@ -50,19 +52,14 @@ if (isset($_POST['btnregister'])) {
             $stmt->bindParam(':fname', $fname);
             $stmt->bindParam(':lname', $lname);
 
-            $password = password_hash($password, PASSWORD_DEFAULT);
-
             $stmt->execute();
             header("location: ../public/login_register.php?message=Registratie succesvol!");
-            die();
+            exit;
         }
+    } catch (PDOException $e) {
+        header("location: ../public/login_register.php?message=Registratie error, controleer uw gegevens a.u.b!");
     }
-    catch (PDOException $e){
-        header("location: ../public/login_register.php?message=registratie error, controleer uw gegevens a.u.b!");
-    }
-}
-
-if (isset($_POST['btnlogin'])) {
+} elseif (isset($_POST['btnlogin'])) {
     try {
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -74,45 +71,39 @@ if (isset($_POST['btnlogin'])) {
         $result = $sql->rowCount();
 
         if ($result > 0) {
-            if($user['is_captain'] == 0 && $user['is_admin'] == 0){
-                $hashedpass = $user['password'];
+            $hashedpass = $user['password'];
 
-                if (password_verify($password, $hashedpass)) {
-                    $_SESSION['isLoggedIn'] = true;
-                    $_SESSION['username'] = $username;
-                    header('location: ../public/login_register.php?loginmessage=Je bent ingelogd!');
-                    die();
-                }
-            }
-            if ($user['is_captain'] == 1) {
-                $hashedpass = $user['password'];
-
-                if (password_verify($password, $hashedpass)) {
-                    $_SESSION['isLoggedIn'] = true;
-                    $_SESSION['username'] = $username;
+            if (password_verify($password, $hashedpass)) {
+                $_SESSION['isLoggedIn'] = true;
+                $_SESSION['username'] = $username;
+                if ($user['is_captain'] == 1 && $user['is_admin'] == 1) {
                     $_SESSION['isCaptain'] = true;
-                    header('location: ../public/login_register.php?loginmessage=Je bent ingelogd als Team Captain.');
-                    die();
-                }
-            }
-            if ($user['is_admin'] == 1) {
-                $hashedpass = $user['password'];
-
-                if (password_verify($password, $hashedpass)) {
-                    $_SESSION['isLoggedIn'] = true;
-                    $_SESSION['username'] = $username;
                     $_SESSION['isAdmin'] = true;
-                    header('location: ../public/login_register.php?loginmessage=Je bent ingelogd als Admin.');
-                    die();
+                    header('location: ../public/index.php');
+                } elseif ($user['is_captain'] == 1) {
+                    $_SESSION['isCaptain'] = true;
+                    header('location: ../public/index.php');
+                } elseif ($user['is_admin'] == 1) {
+                    $_SESSION['isAdmin'] = true;
+                    header('location: ../public/index.php');
+                } else {
+                    header('location: ../public/index.php');
                 }
+                exit;
             }
-        }
-        else{
+            else {
+                header('location: ../public/login_register.php?loginmessage=De ingevulde gebruikersnaam of wachtwoord is fout!');
+                exit;
+            }
+        } else {
             header('location: ../public/login_register.php?loginmessage=De ingevulde gebruikersnaam of wachtwoord is fout!');
-            die();
+            exit;
         }
     }catch (PDOException $e){
-        header('location: ../public/login_register.php?loginmessage=er is een fout opgetreden tijdens het inloggen. Controleer uw gegevens a.u.b.');
-        die();
+        header('location: ../public/login_register.php?loginmessage=Er is een fout opgetreden tijdens het inloggen. Controleer uw gegevens a.u.b.');
+        exit;
     }
+} else {
+    header('location: ../public/login_register.php');
+    exit;
 }

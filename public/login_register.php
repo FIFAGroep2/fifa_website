@@ -14,6 +14,7 @@ session_start();
     </head>
     <body>
         <?php require('templates/header.php'); ?>
+        <?php if (!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) { ?>
         <div id="register">
             <form class="form" action="../app/account_handler.php" method="POST">
                 <h1>Registreren</h1>
@@ -40,7 +41,7 @@ session_start();
                     </div>
                 </div>
 
-                <input class="button" type="submit" name="btnregister" placeholder="Registreren">
+                <input class="button" type="submit" name="btnregister" value="Registreren">
             </form>
         </div>
 
@@ -49,9 +50,6 @@ session_start();
             <?php
             if(isset($_GET['message'])){
                 echo '<h3>' . $_GET['message'] . '</h3>';
-            }
-            else{
-                echo '<p></p>';
             }
             ?>
             <div id="login">
@@ -68,16 +66,20 @@ session_start();
                         <input type="password" name="password" required>
                     </div>
 
-                    <input class="button" id="btnlogin" type="submit" name="btnlogin" placeholder="Inloggen">
+                    <input class="button" type="submit" name="btnlogin" value="Inloggen">
                 </form>
             </div>
             <?php
             if(isset($_GET['loginmessage'])){
                 echo '<h3>' . $_GET['loginmessage'] . '</h3>';
             }
-            else{
-                echo '<p></p>';
-            }
             ?>
         </div>
+        <?php
+        } else {
+            header('location: index.php');
+            exit;
+        }
+        ?>
     </body>
+</html>

@@ -4,16 +4,21 @@
             <h1>Fifa</h1>
         </div>
         <?php
-        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
-            echo '<p>Je bent ingelogd als ADMIN</p>';
+        echo '<p class="headerinfo">';
+        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isAdmin']) &&
+            $_SESSION['isAdmin'] == true && isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true) {
+            echo 'Je bent ingelogd als ADMIN en TEAM CAPTAIN';
+        } elseif (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+            echo 'Je bent ingelogd als ADMIN';
         } elseif (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true) {
-            echo '<p>Je bent ingelogd als TEAM CAPTAIN</p>';
+            echo 'Je bent ingelogd als TEAM CAPTAIN';
         } elseif (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true) {
-            echo '<p>Je bent ingelogd als SPELER</p>';
+            echo 'Je bent ingelogd als SPELER';
         }
         else{
-            echo '<p>Je bent niet ingelogd</p>';
+            echo 'Je bent niet ingelogd. <a href="../public/login_register.php">KLIK HIER</a> om in te loggen.';
         }
+        echo '</p>';
         ?>
         <nav>
             <a href="../public/index.php"><i class="fas fa-trophy"></i>Wedstrijden</a>
