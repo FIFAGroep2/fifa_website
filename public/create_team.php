@@ -1,6 +1,6 @@
 <?php
-require ('../app/connect.php');
 session_start();
+require ('../app/connect.php');
 
 $teams = $server->prepare("SELECT * FROM `tbl_teams`");
 $teams->execute();

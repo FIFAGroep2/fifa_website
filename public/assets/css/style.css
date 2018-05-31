@@ -22,7 +22,6 @@ h4{
     background: rgb(0, 230, 0);
     height: 100vh;
     position: fixed;
-    max-width: 250px;
     z-index: 1;
 }
 #header .container{
@@ -64,11 +63,11 @@ h4{
 #header .container a:hover{
     background-position: 0 0;
 }
-#header .headerinfo{
-    text-align: center;
-}
+
 /* ===================================MAIN =============================================*/
 .main{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     position: relative;
     text-align: center;
@@ -113,7 +112,7 @@ i{
     position: relative;
     height: 100px;
     width: 70%;
-    border:2px solid black;
+    border: 2px solid black;
     margin: 20px 350px;
 }
 .input-border{
@@ -183,13 +182,6 @@ i{
     margin: 25px auto;
     font-size: 1.5em;
 }
-.red-x{
-    margin-left: 15px;
-    max-width: 20px;
-    width: 100%;
-    height: 20px;
-}
-
 
 /* ==========================================RESULTATEN ===========================================*/
 .header-border-result{
@@ -258,8 +250,6 @@ i{
     position: relative;
 }
 
-
-
 .scheme{
     display: flex;
     justify-content: center;
@@ -298,30 +288,46 @@ i{
 
 .main-content{
     display:  flex;
-    justify-content:  space-around;
+    margin-top: 20px;
+    margin-left: 20px;
+    flex-direction: column;
 }
 
+/*!* The animation code *!*/
+/*@keyframes example {*/
+    /*0%   {color:red; left:0px; top:0px;}*/
+    /*25%  {color:yellow; left:200px; top:0px;}*/
+    /*50%  {color:blue; left:200px; top:200px;}*/
+    /*75%  {color:green; left:0px; top:200px;}*/
+    /*100% {color:red; left:0px; top:0px;}*/
+/*}*/
+
+/*!* The element to apply the animation to *!*/
+/*.winner {*/
+    /*animation-name: example;*/
+    /*animation-duration: 4s;*/
+    /*animation-iteration-count: infinite;*/
+    /*animation-direction: reverse;;*/
+    /*font-size: 30px;*/
+    /*font-family: "Arial", 'sans-serif';*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+/*}*/
+
+/*===================BORDER FINALES=====================*/
 .border-finales{
-    margin: 0 auto;
+    margin: 0 350px;
     border: 2px solid #000000;
     width: 70%;
-    height: 800px;
-    position: absolute;
-    left: 350px;
-    top: 155px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    height: auto;
+    position: relative;
 }
 
 .pouleresult-main{
     border: 2px solid #000;
-    width: 80%;
+    width: 90%;
     padding: 20px;
     margin: 30px;
-    position: absolute;
-    bottom: 0;
-    left: 6%;
 }
 
 .poule-names{
@@ -348,118 +354,6 @@ i{
 .word-pouleresult{
     margin-bottom: 0;
     color: #8d7d17;
-}
-
-.bracket-box{
-    position: relative;
-}
-
-.left-bracket{
-    position: absolute;
-    left: 120px;
-    top: 75px;
-}
-
-.right-bracket{
-    position: absolute;
-    right: 120px;
-    top: 75px;
-}
-.border-line-top{
-    position: absolute;
-    top: 39px;
-    left: 60px;
-}
-
-.border-line-bottom{
-    position: absolute;
-    bottom: 39px;
-    left: 60px;
-}
-
-.border-line-top, .border-line-bottom, .border-line-middle, .border-line-middle-left, .border-line-middle-right{
-    border: 1px solid green;
-    height: 12.5%;
-    width: 0;
-    margin: 0 auto;
-}
-
-.left-teams-name, .right-teams-name, .left-teams-name-2nd, .right-teams-name-2nd, .middle-teams-name-left, .middle-teams-name-right{
-    padding: 10px;
-    border: 1px solid green;
-    width: 100px;
-}
-
-.left-teams-name{
-    margin: 35px auto;
-}
-
-.right-teams-name{
-    margin: 35px auto;
-}
-
-.left-teams-name-2nd{
-    margin: 100px auto;
-    position: relative;
-    top: -98px;
-    left: 135px;
-}
-.right-teams-name-2nd{
-    margin: 100px auto;
-    position: relative;
-    top: -98px;
-    right: 257px;
-}
-
-.middle-teams-name-left{
-    position: relative;
-    top: 205px;
-    left: -130px;
-}
-
-.middle-teams-name-right{
-    position: relative;
-    top: 149px;
-    right: -130px;
-}
-
-.border-line-right{
-    border-bottom: 2px solid green;
-    width: 135px;
-    position: absolute;
-    top: 15px;
-    left: 0;
-}
-
-.border-line-left{
-    border-bottom: 2px solid green;
-    width: 135px;
-    position: absolute;
-    top: 15px;
-    right: 0;
-}
-
-.border-line-middle{
-    position: absolute;
-    bottom: 550px;
-    left: 670px;
-}
-.border-line-middle-left{
-    position: absolute;
-    bottom: 507px;
-    left: 375px;
-}
-.border-line-middle-right{
-    position: absolute;
-    bottom: 507px;
-    left: 965px;
-}
-.winner-block{
-    padding: 10px;
-    border: 1px solid green;
-    width: 100px;
-    position: absolute;
-    top: 10%;
 }
 /*==========================================INPUT RESULT ===================================*/
 .header-border-invoer{
@@ -626,6 +520,7 @@ input[type=text], input[type=password]{
     background-color: rgb(0,230,0);
     color: white;
     border: none;
+    width: 17%;
     padding: 10px;
     margin-left: 91px;
 }
@@ -679,6 +574,7 @@ input[type=text], input[type=password]{
     background-color: rgb(0,230,0);
     color: white;
     border: none;
+    width: 17%;
     padding: 10px;
     margin-left: 185px;
     margin-top: 12px;
