@@ -14,3 +14,6 @@ Dit project is gemaakt door:
 - Abdulla Dönmez
 - Ahmad Khaled
 - Kevin Musters
+
+##**LITTLE PREVIEW**
+![Screenshot1](http://prntscr.com/jp7waf)
