@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
 require ('../app/connect.php');
 
 
@@ -17,11 +17,11 @@ $players->execute();
 $rows = $players->rowCount();
 $players = $players->fetchAll();
 
-header('Content-Type: text/html; charset=ISO-8859-1');
 ?>
 <!doctype html>
 <html lang="en" class="dashboard">
 <head>
+    <link rel="icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -100,9 +100,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                     <option disabled selected value="0"> -- Selecteer speler -- </option>
                                     <?php
                                     foreach ($players as $player){
-                                        if ($player['team_id'] == NULL){
-                                            echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
-                                        }
+                                        echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -169,3 +167,9 @@ header('Content-Type: text/html; charset=ISO-8859-1');
     <?php require('templates/footer.php'); ?>
 </body>
 </html>
+    <?php
+        } else {
+            header('location: index.php');
+            exit;
+        }
+    ?>

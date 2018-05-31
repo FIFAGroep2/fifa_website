@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
 require ('../app/connect.php');
 
 $select_teams= $server->prepare('SELECT * FROM `tbl_matches`');
@@ -10,6 +11,7 @@ $results = $select_teams->fetchAll();
 <!doctype html>
 <html lang="en" class="dashboard">
 <head>
+    <link rel="icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -97,3 +99,9 @@ $results = $select_teams->fetchAll();
 <?php require('templates/footer.php'); ?>
 </body>
 </html>
+    <?php
+        } else {
+            header('location: index.php');
+            exit;
+        }
+    ?>

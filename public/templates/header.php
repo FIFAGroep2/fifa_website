@@ -4,6 +4,7 @@
             <h1>Fifa</h1>
         </div>
         <?php
+        header('Content-Type: text/html; charset=ISO-8859-1');
         echo '<p class="headerinfo">';
         if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true && isset($_SESSION['isAdmin']) &&
             $_SESSION['isAdmin'] == true && isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true) {
@@ -28,14 +29,13 @@
                 ?>
                 <a href="../public/login_register.php"><i class="fas fa-sign-in-alt"></i>Login</a>
             <?php } ?>
-            <?php if((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true)
-                || (isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true)){ ?>
+            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true
+                || isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true){ ?>
 
                 <a href="../public/create_team.php"><i class="fas fa-users"></i>Team aanmaken</a>
 
             <?php } ?>
-            <?php if((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true)
-                || (isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'] == true)){ ?>
+            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true){ ?>
 
                 <a href="../public/invoer_resultaten.php"><i class="fas fa-sort-numeric-up"></i>Standen invoeren</a>
 
