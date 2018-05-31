@@ -1,9 +1,17 @@
 <?php
 session_start();
-if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+if((!isset($_SESSION['player-score-a']) && !isset($_SESSION['player-score-b'])) || (empty($_SESSION['player-score-a']) && empty($_SESSION['player-score-b']))) {
+    $_SESSION['player-score-a'] = 0;
+    $_SESSION['player-score-b'] = 0;
+} elseif(!isset($_SESSION['player-score-a']) || empty($_SESSION['player-score-a'])){
+    $_SESSION['player-score-a'] = 0;
+} elseif(!isset($_SESSION['player-score-b']) || empty($_SESSION['player-score-b'])){
+    $_SESSION['player-score-b'] = 0;
+}
 require ('../app/connect.php');
 
-
+global $selected_team_a;
+global $selected_team_b;
 $select_teams= $server->prepare('SELECT * FROM `tbl_matches`');
 $select_teams->execute();
 $results = $select_teams->fetchAll();
@@ -17,11 +25,18 @@ $players->execute();
 $rows = $players->rowCount();
 $players = $players->fetchAll();
 
+$sql = $server->prepare("SELECT tm.id AS id, t1.name AS team_a,t2.name AS team_b,tm.score_team_a, tm.score_team_b FROM tbl_matches tm
+INNER JOIN tbl_teams t1 ON tm.team_id_a = t1.id
+INNER JOIN tbl_teams t2 ON tm.team_id_b = t2.id");
+$sql->execute();
+$result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+header('Content-Type: text/html; charset=ISO-8859-1');
 ?>
+
 <!doctype html>
 <html lang="en" class="dashboard">
 <head>
-    <link rel="icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -43,80 +58,87 @@ $players = $players->fetchAll();
         <div class="team-time">
             <div class="border-invoer">
                 <div class="invoer-resultaten">
-                    <form action="../app/input-result.php">
+                    <?php
+                    if(isset($_GET['message'])){
+                        echo '<h3>' . $_GET['message'] . '</h3>';
+                    }
+                    ?>
+                    <form action="../app/input-result.php" method="POST">
                         <div class="invoer-team-selecteren">
-
-                            <select name="team_list" id="team_list">
-                                <option disabled selected value="0"> -- Selecteer teams -- </option>
-                                <?php
-                                foreach ($teams as $team){
-                                    echo '<option>'. $team['name'] . '</option>';
-                                }
-                                ?>
-                            </select>
-
-                            <select name="team_list" id="team_list">
-                                <option disabled selected value="0"> -- Selecteer teams -- </option>
-                                <?php
-                                foreach ($teams as $team){
-                                    echo '<option>'. $team['name'] . '</option>';
-                                }
-                                ?>
-                            </select>
-
+                            <div class="invoer-team-left">
+                                <select name="team_list_a" id="team_list_a">
+                                    <option value="0"> -- Selecteer teams -- </option>
+                                    <?php
+                                        foreach ($result as $team){
+                                            $_SESSION['team_id'] = $team['id'];
+                                            echo '<option value="'.$team['id'].'">'. $team['team_a'] . ' - ' . $team['team_b']. '</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="resultaten-block">
-                            <?php
-                            $standard = 0;
+                            <div class="resultaten-block-left">
+                                <?php
+                                    echo '<h2>' . $_SESSION['player-score-a'] . '</h2>';
+                                ?>
+                            </div>
 
-                            echo '<h2>' . $standard . '</h2>' ;
-                            echo '<h2>' . $standard . '</h2>' ;
-                            ?>
+                            <div class="resultaten-block-right">
+                                <?php
+                                    echo '<h2>' . $_SESSION['player-score-b'] . '</h2>';
+                                ?>
+                            </div>
                         </div>
 
                         <div class="invoer-scoorer">
-
                             <div class="invoer-scoorer-left">
-
-                                <select name="player_list" id="player_list">
-                                    <option disabled selected value="0"> -- Selecteer speler -- </option>
+                                <select name="player_list_a" id="player_list_a">
+                                    <option value="0"> -- Selecteer speler -- </option>
                                     <?php
-                                    foreach ($players as $player){
-                                        echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
-                                    }
+                                        foreach ($players as $player){
+                                            if (isset($_GET['player_a']) && $_GET['player_a'] == $player['first_name'] . ' ' . $player['last_name'] ) {
+                                                echo '<option selected>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                            } else {
+                                                echo '<option>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                            }
+                                        }
                                     ?>
                                 </select>
 
                                 <div class="add-player-count-btn">
-                                    <input class="btn" type="submit" id="player-sum" name="player-sum" value="toevoegen">
+                                    <input class="btn" type="submit" id="player-sum_a" name="player-sum_a" value="toevoegen">
                                 </div>
-
                             </div>
 
-                            <div class="invoer-scoorer-left">
-
-                                <select name="player_list" id="player_list">
-                                    <option disabled selected value="0"> -- Selecteer speler -- </option>
+                            <div class="invoer-scoorer-right">
+                                <select name="player_list_b" id="player_list_b">
+                                    <option value="0"> -- Selecteer speler -- </option>
                                     <?php
-                                    foreach ($players as $player){
-                                        echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
-                                    }
+                                        foreach ($players as $player){
+                                            if (isset($_GET['player_b']) && $_GET['player_b'] == $player['first_name'] . ' ' . $player['last_name'] ) {
+                                                echo '<option selected>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                            } else {
+                                                echo '<option>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                            }
+                                        }
                                     ?>
                                 </select>
 
                                 <div class="add-player-count-btn">
-                                    <input class="btn" type="submit" id="player-sum" name="player-sum" value="toevoegen">
+                                    <input class="btn" type="submit" id="player-sum_b" name="player-sum_b" value="toevoegen">
                                 </div>
-
                             </div>
+                        </div>
 
+                        <div class="reset-player-count-btn">
+                            <input class ="btn" type="submit" id="player-sum_reset" name="player-sum_reset" value="reset">
                         </div>
 
                         <div class="invoer-submit">
-                            <input  class="btn" type="submit" id="submit-score" name="submit-score" value="versturen">
+                            <input class="btn" type="submit" id="submit-score" name="submit-score" value="versturen">
                         </div>
-
                     </form>
                 </div>
 
@@ -160,16 +182,9 @@ $players = $players->fetchAll();
                         <input type="submit" id="submit-change-time" name="submit-change-time" class="change-time" value="Bewerk Tijd">
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
     <?php require('templates/footer.php'); ?>
 </body>
 </html>
-    <?php
-        } else {
-            header('location: index.php');
-            exit;
-        }
-    ?>
