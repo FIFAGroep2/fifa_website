@@ -5,10 +5,10 @@ require 'connect.php';
 
 if (isset($_POST['btnregister'])) {
     try {
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $fname = trim($_POST['fname']);
+        $lname = trim($_POST['lname']);
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
 
         $sql_select = $server->prepare("SELECT `student_id` FROM `tbl_users` WHERE `student_id` = '$username'");
         $sql_select->execute();
@@ -61,8 +61,8 @@ if (isset($_POST['btnregister'])) {
     }
 } elseif (isset($_POST['btnlogin'])) {
     try {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
 
         $sql = $server->prepare('SELECT * FROM `tbl_users` WHERE `student_id` = :username');
         $sql->bindParam(':username', $username);

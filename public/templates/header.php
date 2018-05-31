@@ -46,6 +46,11 @@
                 <a href="../app/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 
             <?php } ?>
+            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true){ ?>
+                <a href="../app/export.php?type=teams"><i class="fas fa-download"></i>Download Teams CSV</a>
+                <a href="../app/export.php?type=matches"><i class="fas fa-download"></i>Download Matches CSV</a>
+            <?php } ?>
+            <a href="../app/download.php"><i class="fas fa-download"></i>Download Applicatie</a>
         </nav>
     </div>
 </div>
