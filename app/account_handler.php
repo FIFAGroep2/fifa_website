@@ -41,18 +41,24 @@ if (isset($_POST['btnregister'])) {
         }
 
         else {
-
             $password = password_hash($password, PASSWORD_DEFAULT);
             $sql_insert = "INSERT INTO `tbl_users`(`student_id`, `first_name`, `last_name`, `password`) VALUES (:username, :fname, :lname, :password)";
-
             $stmt = $server->prepare($sql_insert);
-
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':fname', $fname);
             $stmt->bindParam(':lname', $lname);
-
             $stmt->execute();
+
+            if(isset($_POST['typeplayer'])) {
+                $sql_insert = "INSERT INTO `tbl_players`(`student_id`, `first_name`, `last_name`) VALUES (:username, :fname, :lname)";
+                $stmt = $server->prepare($sql_insert);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':fname', $fname);
+                $stmt->bindParam(':lname', $lname);
+                $stmt->execute();
+            }
+
             header("location: ../public/login_register.php?message=Registratie succesvol!");
             exit;
         }

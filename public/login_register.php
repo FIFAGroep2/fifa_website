@@ -22,25 +22,22 @@ session_start();
 
                 <div class="labels">
                     <div class="dnummer">
-                        <label for="dnummer">D-nummer:</label>
-                        <input type="text" name="username" required>
+                        <input placeholder="D-nummer" type="text" name="username" required>
                     </div>
 
                     <div class="voornaam">
-                        <label for="voornaam">Voornaam:</label>
-                        <input type="text" name="fname" required>
+                        <input placeholder="Voornaam" type="text" name="fname" required>
                     </div>
 
                     <div class="achternaam">
-                        <label for="achternaam">Achternaam:</label>
-                        <input type="text" name="lname" required>
+                        <input placeholder="Achternaam" type="text" name="lname" required>
                     </div>
 
                     <div class="wachtwoord">
-                        <label for="wachtwoord">Wachtwoord:</label>
-                        <input type="password" name="password" required>
+                        <input placeholder="Wachtwoord" type="password" id="password" name="password" required>
                     </div>
                 </div>
+                <input type="checkbox" name="typeplayer" id="typeplayer" value="1">Registreer als Speler.
 
                 <input class="button" type="submit" name="btnregister" value="Registreren">
             </form>
@@ -58,13 +55,11 @@ session_start();
                     <h1>Login</h1>
 
                     <div class="dnummer">
-                        <label for="dnummer">D-nummer:</label>
-                        <input type="text" name="username" required>
+                        <input placeholder="D-nummer" type="text" name="username" required>
                     </div>
 
                     <div class="wachtwoord">
-                        <label for="wachtwoord">Wachtwoord:</label>
-                        <input type="password" name="password" required>
+                        <input placeholder="Wachtwoord" type="password" id="password" name="password" required>
                     </div>
 
                     <input class="button" type="submit" name="btnlogin" value="Inloggen">

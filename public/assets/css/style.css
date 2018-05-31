@@ -536,22 +536,18 @@ input[type=text], input[type=password]{
 
 #register .dnummer{
     margin-bottom: 10px;
-    margin-right: 85px;
 }
 
 #register .voornaam{
     margin-bottom: 10px;
-    margin-right: 82px;
 }
 
 #register .achternaam{
     margin-bottom: 10px;
-    margin-right: 96px;
 }
 
 #register .wachtwoord{
     margin-bottom: 10px;
-    margin-right: 98px;
 }
 
 .container h3{
@@ -588,7 +584,7 @@ input[type=text], input[type=password]{
 }
 
 #login .wachtwoord{
-    margin-right: 12px;
+    margin-bottom: 10px;
 }
 
 .container h3{

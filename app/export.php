@@ -10,7 +10,7 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] && isset($_SESSION[
 
         $filename = 'Matches.csv';
 
-        $file = fopen($filename, 'w');
+        $file = fopen("php://output", 'w');
         fputcsv($file, array('team_a', 'team_b', 'score_team_a', 'score_team_b'));
     } else if (isset($_GET['type']) && $_GET['type'] == 'teams'){
         $sql = $server->prepare('SELECT `id`, `name` FROM `tbl_teams`');
@@ -19,7 +19,7 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] && isset($_SESSION[
 
         $filename = 'Teams.csv';
 
-        $file = fopen($filename, 'w');
+        $file = fopen("php://output", 'w');
         fputcsv($file, array('id', 'name'));
     }
 
@@ -28,7 +28,9 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] && isset($_SESSION[
     }
     fclose($file);
 
+    header("Last-Modified: {$now} GMT");
     header("Content-disposition: attachment;filename=$filename");
+    header("Content-Transfer-Encoding: binary");
     readfile($filename);
     exit;
 } else {

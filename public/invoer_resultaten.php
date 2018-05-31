@@ -1,5 +1,8 @@
 <?php
 session_start();
+if((isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) && (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])
+|| (isset($_SESSION['isCaptain']) && $_SESSION['isCaptain'])) {
+
 if((!isset($_SESSION['player-score-a']) && !isset($_SESSION['player-score-b'])) || (empty($_SESSION['player-score-a']) && empty($_SESSION['player-score-b']))) {
     $_SESSION['player-score-a'] = 0;
     $_SESSION['player-score-b'] = 0;
@@ -70,8 +73,15 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                     <option value="0"> -- Selecteer teams -- </option>
                                     <?php
                                         foreach ($result as $team){
-                                            $_SESSION['team_id'] = $team['id'];
-                                            echo '<option value="'.$team['id'].'">'. $team['team_a'] . ' - ' . $team['team_b']. '</option>';
+                                            if(isset($_GET['teams']) && !empty($_GET['teams'])) {
+                                                if($_GET['teams'] == $team['id']) {
+                                                    echo '<option value="' . $team['id'] . '"  selected="selected">' . $team['team_a'] . ' - ' . $team['team_b'] . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $team['id'] . '">' . $team['team_a'] . ' - ' . $team['team_b'] . '</option>';
+                                                }
+                                            } else {
+                                                echo '<option value="' . $team['id'] . '">' . $team['team_a'] . ' - ' . $team['team_b'] . '</option>';
+                                            }
                                         }
                                     ?>
                                 </select>
@@ -98,10 +108,10 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                     <option value="0"> -- Selecteer speler -- </option>
                                     <?php
                                         foreach ($players as $player){
-                                            if (isset($_GET['player_a']) && $_GET['player_a'] == $player['first_name'] . ' ' . $player['last_name'] ) {
-                                                echo '<option selected>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                            if (isset($_GET['player_a']) && $_GET['player_a'] == $player['id'] ) {
+                                                echo '<option value="' . $player['id'] . '" selected>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
                                             } else {
-                                                echo '<option>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                                echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
                                             }
                                         }
                                     ?>
@@ -117,10 +127,10 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                                     <option value="0"> -- Selecteer speler -- </option>
                                     <?php
                                         foreach ($players as $player){
-                                            if (isset($_GET['player_b']) && $_GET['player_b'] == $player['first_name'] . ' ' . $player['last_name'] ) {
-                                                echo '<option selected>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                            if (isset($_GET['player_b']) && $_GET['player_b'] == $player['id'] ) {
+                                                echo '<option value="' . $player['id'] . '" selected>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
                                             } else {
-                                                echo '<option>' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
+                                                echo '<option value="' . $player['id'] . '">' . $player['first_name'] . ' ' . $player['last_name'] . '</option>';
                                             }
                                         }
                                     ?>
@@ -188,3 +198,9 @@ header('Content-Type: text/html; charset=ISO-8859-1');
     <?php require('templates/footer.php'); ?>
 </body>
 </html>
+    <?php
+} else {
+    header('location: index.php');
+    exit;
+}
+    ?>
