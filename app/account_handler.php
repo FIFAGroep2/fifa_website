@@ -16,7 +16,7 @@ if (isset($_POST['btnregister'])) {
 
 
         if($result > 0){
-            header("location: ../public/login_register.php?message=Dit d-nummer is al in gebruik.");
+            header("location: ../public/login_register.php?message=Dit D-nummer is al in gebruik.");
             exit;
         }
 
@@ -35,8 +35,24 @@ if (isset($_POST['btnregister'])) {
             exit;
         }
 
+        $pattern = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+        if(preg_match($pattern, $username)){
+            header("location: ../public/login_register.php?message=Alleen letters en cijfers toegestaan in het D-nummer!");
+            exit;
+        }
+
+        if(preg_match($pattern . "#[0-9]+#", $fname)){
+            header("location: ../public/login_register.php?message=Alleen letters toegestaan in voornaam!");
+            exit;
+        }
+
+        if(preg_match($pattern . "#[0-9]+#", $lname)){
+            header("location: ../public/login_register.php?message=Alleen letters toegestaan in achternaam!");
+            exit;
+        }
+
         if (strlen($username) > 13){
-            header("location: ../public/login_register.php?message=Uw dnummer kan maximaal 13 karakters bevatten.");
+            header("location: ../public/login_register.php?message=Uw D-nummer kan maximaal 13 karakters bevatten.");
             exit;
         }
 
